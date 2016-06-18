@@ -1,7 +1,6 @@
 <?php
 
 use App\Order;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class OrderServiceTest extends TestCase
@@ -9,7 +8,7 @@ class OrderServiceTest extends TestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function SQLiteInMermoy連線()
+    public function SQLiteInMemory連線()
     {
         /** arrange */
         $expected = 0;
