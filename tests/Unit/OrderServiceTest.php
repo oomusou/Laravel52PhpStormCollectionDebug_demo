@@ -1,6 +1,7 @@
 <?php
 
 use App\Order;
+use App\Services\OrderService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
