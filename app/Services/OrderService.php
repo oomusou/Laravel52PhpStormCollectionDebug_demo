@@ -25,15 +25,15 @@ class OrderService
      */
     public function calculateTodayTotalAmount() : int
     {
-        $totalAmount = 0;
-
-        $orders = $this->order->all();
-        foreach($orders as $order) {
-            if ($order->order_date == Carbon::now()) {
-                $totalAmount = $totalAmount + $order->quantity * $order->price;
-            }
-        }
-
-        return $totalAmount;
+        return $this->order->all()
+            ->filter(function ($value) {
+                return $value->order_date == Carbon::now();
+            })
+            ->map(function ($value) {
+                return $value->quantity * $value->price;
+            })
+            ->reduce(function ($carry, $value) {
+                return $carry + $value;
+            });
     }
 }
